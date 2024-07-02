@@ -8,8 +8,24 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
+const allowedOrigins = [
+  'http://localhost:5000', 
+  'https://aspire-nex-web-scraping-ecommerce-websites.vercel.app/' // Deployed frontend
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 
 app.get("/", (req, res) => {
   res.send("hello");
