@@ -11,8 +11,8 @@ const PORT = 5000;
 // app.use(cors());
 app.use(express.json());
 const allowedOrigins = [
-  'http://localhost:5000', 
-  'https://aspire-nex-web-scraping-ecommerce-websites.vercel.app/' // Deployed frontend
+  'https://aspire-nex-backend.vercel.app', 
+  'https://aspire-nex-web-scraping-ecommerce-websites.vercel.app' 
 ];
 
 app.use(cors({
